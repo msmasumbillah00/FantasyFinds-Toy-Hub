@@ -5,13 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAiUUtoSppkFfMK5w2hTTi4gP4soj7qcos",
-    authDomain: "fantasyfinds-toy-hub.firebaseapp.com",
-    projectId: "fantasyfinds-toy-hub",
-    storageBucket: "fantasyfinds-toy-hub.appspot.com",
-    messagingSenderId: "724556453125",
-    appId: "1:724556453125:web:c180bb2fd4894f37c1d36c"
-};
+    apiKey:  import.meta.env.FIREBASE_APIKEY,
+    authDomain: import.meta.env.FIREBASE_AUTHDOMAIN,
+    projectId: import.meta.env.FIREBASE_PROJECTID,
+    storageBucket:import.meta.env.FIREBASE_STORAGEBUCKET,
+    messagingSenderId:import.meta.env.FIREBASE_MESSAGINGSENDERID,
+    appId: import.meta.env.FIREBASE_APPID
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
