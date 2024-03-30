@@ -9,6 +9,11 @@ const DataContextProvider = ({ children }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuqry, setSearchQuary] = useState([]);
 
+
+
+
+
+
     const goToNextPage = (totalPages) => {
         if (currentPage < totalPages) {
             setCurrentPage(currentPage + 1);
@@ -28,7 +33,7 @@ const DataContextProvider = ({ children }) => {
         goToNextPage,
         goToPreviousPage,
         searchQuqry,
-        setSearchQuary
+        setSearchQuary,
 
     }
     return (

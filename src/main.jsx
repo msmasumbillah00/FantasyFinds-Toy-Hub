@@ -7,10 +7,15 @@ import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import UserContextProvider from './context/UserContextProvider';
-import Profile from './pages/Profile/Profile';
 import Products from './pages/Home/Products/Products';
 import DataContextProvider from './context/DataContextProvider';
 import Catagories from './pages/Catagories/Catagories';
+import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Checkout from './pages/Checkout/Checkout';
+import MyToyes from './pages/MyToyes/MyToyes';
+import PrivateRout from './components/PrivateRout/PrivateRout';
+import Myorders from './pages/Myorders/Myorders';
+import OrderDetails from './pages/Myorders/OrderDetails/OrderDetails';
 
 
 const router = createBrowserRouter([
@@ -24,6 +29,10 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
+            element: <Products></Products>
+          },
+          {
+            path: "/page/:id",
             element: <Products></Products>
           }
         ]
@@ -41,12 +50,30 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path: "/profile",
-        element: <Profile></Profile>
+        path: "/checkout",
+        element: <Checkout></Checkout>
+      },
+      {
+        path: "/productDetails/:Id",
+        element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.Id}`)
       },
       {
         path: "/catagories/:id",
-        element: <Catagories></Catagories>
+        element: <Catagories></Catagories>,
+        loader: ({ params }) => fetch(`http://localhost:5000/catagories/${params.id}`)
+      },
+      {
+        path: "/myToys",
+        element: <PrivateRout><MyToyes></MyToyes></PrivateRout>
+      },
+      {
+        path: "/orders",
+        element: <PrivateRout><Myorders></Myorders></PrivateRout>
+      },
+      {
+        path: "/orders/:id",
+        element: <OrderDetails></OrderDetails>
       }
 
     ]

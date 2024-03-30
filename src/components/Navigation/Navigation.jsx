@@ -1,8 +1,11 @@
 import { BsSearch } from "react-icons/bs";
 import { LuLogIn, LuLogOut } from "react-icons/lu";
 import { GiArchiveRegister } from "react-icons/gi";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
-import { PiHandbagSimple } from "react-icons/pi";
+import { FaShoppingCart } from "react-icons/fa";
+
+
 import logo from "../../assets/home/logo/fantasyhub.png"
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
@@ -50,16 +53,21 @@ const Navigation = () => {
                         </div>
                         <div className="hidden md:block ml-4">
                             <Link to="/" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">Home</Link>
-                            <Link to="/" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">About</Link>
-                            <Link to="/bookings" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">Bookings</Link>
+                            <Link to="/myToys" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">My Toyes</Link>
+
                         </div>
                         <div className="flex">
                             <div className="items-center flex me-4">
-                                <button className=" me-3">
-                                    <PiHandbagSimple />
-                                </button>
+
                                 <button className=" ">
-                                    <BsSearch />
+                                    <BsSearch className="md:hidden me-3" />
+                                    <label className="input  hidden md:flex input-bordered me-3  input-sm items-center gap-2">
+                                        <input type="text" className="grow" placeholder="Search" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+                                    </label>
+                                </button>
+                                <button className=" me-3">
+                                    <Link to="/myToys"> <FaShoppingCart /></Link>
                                 </button>
                                 {
                                     !user ?
@@ -74,8 +82,10 @@ const Navigation = () => {
                                             </div>
                                             <ul tabIndex={0} className="dropdown-content -right-16 md:-right-12 xl:right-4 z-[1] menu p-2 shadow bg-base-100  w-52">
                                                 <li><Link to={"/profile"} className="font-semibold"> {user?.displayName || "Profile"}</Link></li>
+                                                <li className="flex"><Link to={"/orders"} className="flex justify-between"><span>Orders</span> <MdOutlineProductionQuantityLimits className=" ms-5 font-bold text-xl" /></Link></li>
                                                 <li className="flex"><Link to={"/register"} className="flex justify-between"><span>Register</span> <GiArchiveRegister className=" ms-5 font-bold text-xl" /></Link></li>
                                                 <li className="flex" onClick={handelLogout}><Link to={"/"} className="flex justify-between"><span>LogOut</span> <LuLogOut className=" ms-5 font-bold text-xl" /></Link></li>
+
                                             </ul>
                                         </div>
                                 }
@@ -100,7 +110,7 @@ const Navigation = () => {
                     <div className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                             <Link to="/" className=" block px-3 py-2 rounded-md  font-medium">Home</Link>
-                            <Link to="/" className=" block px-3 py-2 rounded-md  font-medium">About</Link>
+                            <Link to="/myToys" className=" block px-3 py-2 rounded-md  font-medium">My Toys</Link>
                             <Link to="/" className=" block px-3 py-2 rounded-md  font-medium">Services</Link>
                             <Link to="/" className=" block px-3 py-2 rounded-md  font-medium">Contact</Link>
                         </div>

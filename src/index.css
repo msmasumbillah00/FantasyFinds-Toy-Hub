@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .container_scrl::-webkit-scrollbar {
-    width: 10px; /* Adjust the width as needed */
+    width: 5px; /* Adjust the width as needed */
   }

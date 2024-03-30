@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Catagory = () => {
-    const [catagories, setCatagories] = useState([])
+    const [catagories, setCatagories] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:5000/catagories")
@@ -12,7 +12,6 @@ const Catagory = () => {
             })
     }, [])
 
-    console.log(JSON.stringify(catagories))
     return (
         <div className="my-10 ">
             <h1 className="text-center text-4xl my-5 font-semibold sticky top-0 z-10 bg-white my-8">Shope By Catagories</h1>
@@ -24,7 +23,7 @@ const Catagory = () => {
                         <div className="card-body p-2 ">
                             <h2 className="card-title">{ele.title}</h2>
                             <div className="card-actions justify-left">
-                                <button className="btn btn-sm w-fit text-white bg-gradient-to-tr mb-3  from-cyan-500 to-slate-400"><Link to={`/catagories/${ele._id}`}>See All Products</Link></button>
+                                <Link to={`/catagories/${ele._id}`}> <button className="btn btn-sm w-fit text-white bg-gradient-to-tr mb-3  from-cyan-500 to-slate-400">See All Products</button></Link>
                             </div>
                         </div>
                     </div>)
