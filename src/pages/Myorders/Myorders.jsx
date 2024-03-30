@@ -10,7 +10,11 @@ const Myorders = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?user=${user.uid}`)
+        fetch(`http://localhost:5000/orders?user=${user.uid}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("car-access-token")}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 // console.log(data)

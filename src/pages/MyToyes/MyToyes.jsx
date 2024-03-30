@@ -17,7 +17,11 @@ const MyToyes = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys?user=${user.uid}`)
+        fetch(`http://localhost:5000/myToys?user=${user.uid}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("car-access-token")}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setToyes(data)

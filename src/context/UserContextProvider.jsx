@@ -36,6 +36,7 @@ const UserContextProvider = ({ children }) => {
             else {
                 setUser(null)
                 localStorage.removeItem("car-access-token")
+                localStorage.removeItem("checkoutData")
 
             }
             setLoading(false)
