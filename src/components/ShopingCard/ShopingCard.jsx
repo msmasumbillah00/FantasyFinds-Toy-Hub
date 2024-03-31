@@ -39,7 +39,7 @@ const ShopingCard = ({ ele }) => {
             }
 
         }
-        fetch('http://localhost:5000/myToys', {
+        fetch('https://fantasy-finds-server.vercel.app/myToys', {
             method: 'POST', // Specify the request method
             headers: {
                 'Content-Type': 'application/json', // Specify the content type
@@ -118,9 +118,38 @@ const ShopingCard = ({ ele }) => {
             </div>
         );
     };
-    const openDialogue = (event, id) => {
+    const openDialogue = async (event, id) => {
+        if (!user) {
+            let timerInterval;
+            Swal.fire({
+                title: "Please Login First !",
+                html: "You must have an account to order",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                    navigate("/login")
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+
+            await new Promise(resolve => setTimeout(resolve, 1200));
+
+            return
+        }
         setEventName(event.target.innerText, id)
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://fantasy-finds-server.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => {
                 setModalData(data)

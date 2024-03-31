@@ -8,9 +8,8 @@ const Myorders = () => {
     const [toyes, setToyes] = useState([]);
     const navigate = useNavigate()
 
-
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?user=${user.uid}`, {
+        fetch(`https://fantasy-finds-server.vercel.app/orders?user=${user.uid}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("car-access-token")}`
             }
@@ -24,7 +23,7 @@ const Myorders = () => {
     }, [toyes])
 
     const handelDelete = async (id) => {
-        await fetch(`http://localhost:5000/orders?id=${id}`, {
+        await fetch(`https://fantasy-finds-server.vercel.app/orders?id=${id}`, {
             headers: { 'Content-Type': 'application/json' },
             method: "DELETE",
         })

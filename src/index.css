@@ -5,3 +5,9 @@
 .container_scrl::-webkit-scrollbar {
     width: 5px; /* Adjust the width as needed */
   }
+
+  .active{
+    background: linear-gradient(to bottom, #eef5fa, #e1eaf8);
+    padding:5px 10px;
+    border-radius: 5px;
+  }

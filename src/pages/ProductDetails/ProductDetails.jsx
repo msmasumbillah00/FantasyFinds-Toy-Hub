@@ -38,7 +38,7 @@ const ProductDetails = () => {
             }
 
         }
-        fetch('http://localhost:5000/myToys', {
+        fetch('https://fantasy-finds-server.vercel.app/myToys', {
             method: 'POST', // Specify the request method
             headers: {
                 'Content-Type': 'application/json', // Specify the content type
@@ -120,6 +120,32 @@ const ProductDetails = () => {
     };
 
     const openDialogue = (event) => {
+        if (!user) {
+            let timerInterval;
+            Swal.fire({
+                title: "Please Login First !",
+                html: "You must have an account to order",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+            return
+        }
+
         setDailogData(event.target.innerText)
         setIsOpen(true);
         if (!colorFamily) {

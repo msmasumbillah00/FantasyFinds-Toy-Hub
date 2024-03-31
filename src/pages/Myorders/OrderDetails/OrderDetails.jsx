@@ -17,7 +17,7 @@ const OrderDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${params.id}`)
+        fetch(`https://fantasy-finds-server.vercel.app/orders/${params.id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

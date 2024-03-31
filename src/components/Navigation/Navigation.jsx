@@ -2,6 +2,7 @@ import { BsSearch } from "react-icons/bs";
 import { LuLogIn, LuLogOut } from "react-icons/lu";
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import ActiveLink from "../ActiveLink/ActiveLink"
 
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -49,29 +50,30 @@ const Navigation = () => {
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
                             <Link to="/" className=" text-lg font-semibold"><img src={logo} alt="" className=" h-16 md:h-20 lg:h-24 rounded" /></Link>
-
                         </div>
                         <div className="hidden md:block ml-4">
-                            <Link to="/" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">Home</Link>
-                            <Link to="/myToys" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">My Toyes</Link>
+                            <ActiveLink to="/" className=" px-5 lg:px-8 py-2 rounded-md  font-medium">Home</ActiveLink>
+                            <ActiveLink to="/myToys" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">My Toyes</ActiveLink>
+                            <ActiveLink to="/blogs" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">Blogs</ActiveLink>
+                            <ActiveLink to="/addtoy" className=" px-3 lg:px-8 py-2 rounded-md  font-medium">Add A Toy</ActiveLink>
 
                         </div>
                         <div className="flex">
                             <div className="items-center flex me-4">
 
                                 <button className=" ">
-                                    <BsSearch className="md:hidden me-3" />
-                                    <label className="input  hidden md:flex input-bordered me-3  input-sm items-center gap-2">
+                                    <BsSearch className="lg:hidden me-3" />
+                                    <label className="input  hidden lg:flex input-bordered me-3  input-sm items-center gap-2">
                                         <input type="text" className="grow" placeholder="Search" />
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
                                     </label>
                                 </button>
                                 <button className=" me-3">
-                                    <Link to="/myToys"> <FaShoppingCart /></Link>
+                                    <ActiveLink to="/myToys"> <FaShoppingCart /></ActiveLink>
                                 </button>
                                 {
                                     !user ?
-                                        <Link to={"/login"}> <LuLogIn className="text-3xl ms-5" /></Link>
+                                        <ActiveLink to={"/login"}> <LuLogIn className="text-3xl ms-5" /></ActiveLink>
 
                                         :
                                         <div className="dropdown dropdown-hover ">
@@ -108,11 +110,11 @@ const Navigation = () => {
                 </div>
                 {isOpen && (
                     <div className="md:hidden">
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            <Link to="/" className=" block px-3 py-2 rounded-md  font-medium">Home</Link>
-                            <Link to="/myToys" className=" block px-3 py-2 rounded-md  font-medium">My Toys</Link>
-                            <Link to="/" className=" block px-3 py-2 rounded-md  font-medium">Services</Link>
-                            <Link to="/" className=" block px-3 py-2 rounded-md  font-medium">Contact</Link>
+                        <div className="px-2 pt-2 pb-3 w-fit space-y-1 sm:px-3">
+                            <ActiveLink to="/" className=" block px-3 py-2 rounded-md  font-medium">Home</ActiveLink>
+                            <ActiveLink to="/myToys" className=" block px-3 py-2 rounded-md  font-medium">My Toys</ActiveLink>
+                            <ActiveLink to="/blogs" className=" block px-3 py-2 rounded-md  font-medium">Blogs</ActiveLink>
+                            <ActiveLink to="/addtoy" className=" block px-3 py-2 rounded-md  font-medium">Add a toy</ActiveLink>
                         </div>
                     </div>
                 )}

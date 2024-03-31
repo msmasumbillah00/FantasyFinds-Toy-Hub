@@ -77,7 +77,7 @@ const Checkout = () => {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                fetch('http://localhost:5000/orders', {
+                fetch('https://fantasy-finds-server.vercel.app/orders', {
                     method: 'POST', // Specify the request method
                     headers: {
                         'Content-Type': 'application/json', // Specify the content type
@@ -108,7 +108,7 @@ const Checkout = () => {
                     })
 
             } else if (result.isDenied) {
-                fetch('http://localhost:5000/myToys', {
+                fetch('https://fantasy-finds-server.vercel.app/myToys', {
                     method: 'POST', // Specify the request method
                     headers: {
                         'Content-Type': 'application/json', // Specify the content type
@@ -198,7 +198,7 @@ const Checkout = () => {
     useEffect(() => {
 
 
-        fetch(`http://localhost:5000/checkoutProducts`, {
+        fetch(`https://fantasy-finds-server.vercel.app/checkoutProducts`, {
             method: 'POST', // Request method
             headers: {      // Request headers
                 'Content-Type': 'application/json' // Specify content type as JSON

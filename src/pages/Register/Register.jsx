@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContextProvider";
 import Swal from 'sweetalert2'
+import { updateProfile } from 'firebase/auth';
 
 
 const Register = () => {
@@ -14,6 +15,8 @@ const Register = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        const name = form.name.value;
+        const photo = form.photo.value;
         setLoading(true);
         createUserWithEmailPAss(email, password)
             .then(async result => {
@@ -26,6 +29,14 @@ const Register = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    updateProfile(user, {
+                        displayName: name, photoURL: photo
+                    })
+                        .then(() => { })
+                        .catch((error) => console.log(
+                            error
+                        ))
                     form.reset()
                 }
                 setLoading(false)
@@ -58,6 +69,7 @@ const Register = () => {
                                 placeholder="Email Address"
                             />
                         </div>
+
                         <div className="mb-6">
                             <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
                                 Password
@@ -72,7 +84,34 @@ const Register = () => {
                                 placeholder="Password"
                             />
                         </div>
-
+                        <div className="mb-6">
+                            <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
+                                Name
+                            </label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                autoComplete="current-name"
+                                required
+                                className="appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Name"
+                            />
+                        </div>
+                        <div className="mb-6">
+                            <label htmlFor="photo" className="block text-gray-700 text-sm font-bold mb-2">
+                                Photo
+                            </label>
+                            <input
+                                id="photo"
+                                name="photo"
+                                type="url"
+                                autoComplete="current-photo"
+                                required
+                                className="appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Photo"
+                            />
+                        </div>
                         <button
                             type="submit"
                             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

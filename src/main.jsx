@@ -16,6 +16,8 @@ import MyToyes from './pages/MyToyes/MyToyes';
 import PrivateRout from './components/PrivateRout/PrivateRout';
 import Myorders from './pages/Myorders/Myorders';
 import OrderDetails from './pages/Myorders/OrderDetails/OrderDetails';
+import Blogs from './pages/Blogs/Blogs';
+import AddToy from './pages/AddToy/AddToy';
 
 
 const router = createBrowserRouter([
@@ -56,12 +58,12 @@ const router = createBrowserRouter([
       {
         path: "/productDetails/:Id",
         element: <ProductDetails></ProductDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.Id}`)
+        loader: ({ params }) => fetch(`https://fantasy-finds-server.vercel.app/products/${params.Id}`)
       },
       {
         path: "/catagories/:id",
         element: <Catagories></Catagories>,
-        loader: ({ params }) => fetch(`http://localhost:5000/catagories/${params.id}`)
+        loader: ({ params }) => fetch(`https://fantasy-finds-server.vercel.app/catagories/${params.id}`)
       },
       {
         path: "/myToys",
@@ -72,8 +74,16 @@ const router = createBrowserRouter([
         element: <PrivateRout><Myorders></Myorders></PrivateRout>
       },
       {
+        path: "/blogs",
+        element: <Blogs></Blogs>
+      },
+      {
         path: "/orders/:id",
         element: <OrderDetails></OrderDetails>
+      },
+      {
+        path: "/addtoy",
+        element: <PrivateRout><AddToy></AddToy></PrivateRout>
       }
 
     ]

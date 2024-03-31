@@ -21,7 +21,7 @@ const Products = () => {
 
     useEffect(() => {
         async function fetchData() {
-            let response = await fetch(`http://localhost:5000/products?page=${currentPage}&limin=${12}`);
+            let response = await fetch(`https://fantasy-finds-server.vercel.app/products?page=${currentPage}&limin=${12}`);
             const data = await response.json();
 
             sethomeData(data)
@@ -31,7 +31,7 @@ const Products = () => {
 
     return (
         <div className="my-16">
-            <h1 className="text-[40px] my-20 pb-6 text-center font-semibold sticky top-0 z-10 bg-white">Shop our products</h1>
+            <h1 className="text-[40px] my-20 pb-6 text-center font-semibold sticky top-0 z-10 bg-white">Just For you</h1>
             <div className="mb-20">
                 <div
                     className="grid my-20 container_scrl grid-cols-1 place-items-center md:grid-cols-2 mt-10 lg:grid-cols-3 xl:grid-cols-4 gap-5  ">

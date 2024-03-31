@@ -17,7 +17,7 @@ const MyToyes = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys?user=${user.uid}`, {
+        fetch(`https://fantasy-finds-server.vercel.app/myToys?user=${user.uid}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("car-access-token")}`
             }
@@ -54,7 +54,7 @@ const MyToyes = () => {
     }, [toyes])
 
     const handelDelete = async (id) => {
-        await fetch(`http://localhost:5000/myToys?id=${id}`, {
+        await fetch(`https://fantasy-finds-server.vercel.app/myToys?id=${id}`, {
             headers: { 'Content-Type': 'application/json' },
             method: "DELETE",
         })
@@ -76,7 +76,7 @@ const MyToyes = () => {
 
         }
         const quntity = Number(event.target.parentNode.children[1].innerText)
-        fetch(`http://localhost:5000/myToys/${id}`, {
+        fetch(`https://fantasy-finds-server.vercel.app/myToys/${id}`, {
             method: 'PUT', // Use PUT or PATCH for update operations
             headers: {
                 'Content-Type': 'application/json', // Specify content type as JSON

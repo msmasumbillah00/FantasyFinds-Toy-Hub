@@ -23,10 +23,10 @@ const UserContextProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
                 setUser(user)
-                fetch("http://localhost:5000/jwt", {
+                fetch("https://fantasy-finds-server.vercel.app/jwt", {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: user.email })
+                    body: JSON.stringify({ uid: user.uid })
                 })
                     .then(res => res.json())
                     .then(data => {

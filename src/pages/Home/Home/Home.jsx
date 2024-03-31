@@ -7,7 +7,7 @@ import Pagination from './../../../components/Pagination/Pagination';
 const Home = () => {
     const [totalPage, setTotalPage] = useState(0)
     useEffect(() => {
-        fetch("http://localhost:5000/allproducts")
+        fetch("https://fantasy-finds-server.vercel.app/allproducts")
             .then(res => res.json())
             .then(data => setTotalPage(Math.ceil((data.length) / 12)))
     }, [])
