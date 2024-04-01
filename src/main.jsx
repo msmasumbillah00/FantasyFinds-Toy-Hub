@@ -18,6 +18,7 @@ import Myorders from './pages/Myorders/Myorders';
 import OrderDetails from './pages/Myorders/OrderDetails/OrderDetails';
 import Blogs from './pages/Blogs/Blogs';
 import AddToy from './pages/AddToy/AddToy';
+import SearchProduct from './SearchProduct';
 
 
 const router = createBrowserRouter([
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       {
         path: "/orders/:id",
         element: <OrderDetails></OrderDetails>
+      },
+      {
+        path: "/search",
+        element: <SearchProduct></SearchProduct>
       },
       {
         path: "/addtoy",
